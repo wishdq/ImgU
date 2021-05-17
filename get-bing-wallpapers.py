@@ -43,7 +43,7 @@ def main():
         return
     url = bing_url + re.search(r'\((.+)\)', str(img_cont)).group(1)
     log.info(f"Found image url in html: {url}")
-    md5sum = hashlib.md5(url.encode('utf-8')).hexdigest()
+    md5sum = hashlib.md5(url.encode('utf-8')).hexdigest()[:5]
     log.info(f"Hash of image url: {md5sum}")
 
     # Stop if we have this checksum in dest
