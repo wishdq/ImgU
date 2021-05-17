@@ -9,36 +9,38 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.8'
         architecture: 'x64'
+
     - name: Download
       run: |
         pip install -r requirements.txt
         python get-bing-wallpapers.py
+
     - name: Commit
       run: |
         git add .
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git commit -m "Add toady's (`date +%Y/%m/%d`) wallpaper" -a
+        git commit -m "add bing wallpaper (`date +%Y/%m/%d`)" -a
+
     - name: Push
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.TOKEN }}
         branch: ${{ github.ref }}
-    - name: Copy file
-      run: cp -r Bing album/assets
+
     - name: Build
-      run: |
-        cd album
-        npm install && npm run build
+      run: npm install && npm run build
+
     - name: deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.TOKEN }}
-        publish_dir: ./album/dist
+        publish_dir: ./dist
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
