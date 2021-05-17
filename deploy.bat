@@ -12,12 +12,12 @@ echo 基本信息
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 echo 当前目录是：%cd%
 echo;
-echo git版本 %git --version%
-
+echo git版本
+git --version
 echo;
 
 
-echo Run---^> git add -A .
+echo Run--- git add -A .
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 git add -A .
 echo success add
@@ -26,7 +26,7 @@ echo;
 
 
 echo;
-echo 提交变更到本地仓库---^>git commit
+echo 提交变更到本地仓库---git commit
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 @echo off
 set /p var=请输入提交说明: 
