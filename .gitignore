@@ -1,5 +1,4 @@
 /dist 
-!/assets/node_modules/@matrixage/
-/node_modules
+!/node_modules
 deploy.bat
 .DS_Store
