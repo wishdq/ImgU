@@ -6,7 +6,7 @@
     "init": "picpic init",
     "build": "picpic build"
   },
-  "author": "weiyu",
+  "author": "wish_dq",
   "license": "MIT",
   "devDependencies": {
     "@matrixage/picpic": "^1.3.0"
