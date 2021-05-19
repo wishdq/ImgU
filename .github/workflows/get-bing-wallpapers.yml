@@ -18,7 +18,11 @@ jobs:
 
     - name: Download
       run: |
-        timedatectl && timedatectl list-timezones
+        timedatectl && tzselect
+        Asia && China
+        Beijing Time && 1
+        timedatectl
+        cp /usr/share/zoneinfo/Asia/
         pip install -r requirements.txt
         python get-bing-wallpapers.py
 
