@@ -17,14 +17,10 @@ jobs:
         architecture: 'x64'
 
     - name: Download
+      env:
+          TZ: Asia/Shanghai  # 设置时区
       run: |
-        timedatectl && tzselect
-        Asia
-        China
-        Beijing Time
-        1
         timedatectl
-        cp /usr/share/zoneinfo/Asia/
         pip install -r requirements.txt
         python get-bing-wallpapers.py
 
