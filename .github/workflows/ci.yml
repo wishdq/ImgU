@@ -13,7 +13,7 @@ jobs:
     - name: Build
       run: |
         npm install
-		cp -r ./require/@matrixage ./node_modules
+        cp -r ./require/@matrixage ./node_modules
         npm run build
 
     - name: Deploy
