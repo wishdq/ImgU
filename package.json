@@ -1,23 +1,13 @@
 {
   "name": "img",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.1",
+  "description": "img",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "init": "picpic init",
     "build": "picpic build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wishdq/img.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/wishdq/img/issues"
-  },
-  "homepage": "https://github.com/wishdq/img#readme",
+  "author": "weiyu",
+  "license": "MIT",
   "devDependencies": {
     "@matrixage/picpic": "^1.3.0"
   }
