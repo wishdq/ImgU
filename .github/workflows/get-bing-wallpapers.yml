@@ -19,8 +19,10 @@ jobs:
     - name: Download
       run: |
         timedatectl && tzselect
-        Asia && China
-        Beijing Time && 1
+        Asia
+        China
+        Beijing Time
+        1
         timedatectl
         cp /usr/share/zoneinfo/Asia/
         pip install -r requirements.txt
