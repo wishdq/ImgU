@@ -55,6 +55,7 @@ def main():
 
     # Build the filename
     image_file = f"{datetime.date.today().isoformat()}_{md5sum}.jpg"
+    log.info(f"image_file name: {image_file}")
     image_fullname = os.path.join(dest, image_file)
 
     # Download the file
