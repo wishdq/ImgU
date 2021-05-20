@@ -24,7 +24,7 @@ def main():
     Destination filename will be YYYY-mm-dd_{md5dum}.jpg
     """
     dest = './assets/BingWallpapers'
-    bing_url = 'https://bing.com'
+    bing_url = 'https://cn.bing.com/?FORM=BEHPTB'
     archive_dir = os.path.join(dest, 'Archive')
 
     try:
