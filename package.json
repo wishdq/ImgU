@@ -4,9 +4,9 @@
   "description": "img",
   "scripts": {
     "init": "picpic init",
-    
+    "build": "picpic build"
   },
   "author": "wish_dq",
   "license": "MIT",
-  
+  "devDependencies": {}
 }
