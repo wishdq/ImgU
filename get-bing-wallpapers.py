@@ -24,7 +24,7 @@ def main():
     Destination filename will be YYYY-mm-dd_{md5dum}.jpg
     """
     dest = './assets/BingWallpapers'
-    bing_url = 'https://cn.bing.com'
+    bing_url = 'https://cn.bing.com/?FORM=BEHPTB'
     archive_dir = os.path.join(dest, 'Archive')
 
     try:
@@ -41,7 +41,7 @@ def main():
     if not img_cont:
         log.error(f"Could not parse html from {bing_url}. Exiting.")
         return
-    url = bing_url + re.search(r'\((.+)\)', str(img_cont)).group(1)
+    url = bing_url[:19] + re.search(r'\((.+)\)', str(img_cont)).group(1)
     log.info(f"Found image url in html: {url}")
     md5sum = hashlib.md5(url.encode('utf-8')).hexdigest()[:5]
     log.info(f"Hash of image url: {md5sum}")
