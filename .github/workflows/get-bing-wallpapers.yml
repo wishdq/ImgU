@@ -42,6 +42,8 @@ jobs:
         npm install
         cp -r ./require/@matrixage ./node_modules
         npm run build
+        cp -f ./ssr.txt ./dist/ssr.txt
+        cp -f ./v2.txt ./dist/v2.txt
 
     - name: deploy
       uses: peaceiris/actions-gh-pages@v3
