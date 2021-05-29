@@ -10,12 +10,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-#     - name: Set up Python
-#       uses: actions/setup-python@v2
-#       with:
-#         python-version: '3.8'
-#         architecture: 'x64'
-
     - name: Download
       env:
           TZ: Asia/Shanghai  # 设置时区
@@ -37,15 +31,15 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.ref }}
 
-#     - name: Build
-#       run: |
-#         npm install
-#         cp -r ./require/@matrixage ./node_modules
-#         npm run build
-#     - name: deploy
-#       uses: peaceiris/actions-gh-pages@v3
-#       with:
-#         github_token: ${{ secrets.GITHUB_TOKEN }}
-#         publish_dir: ./dist
-#         user_name: 'github-actions[bot]'
-#         user_email: 'github-actions[bot]@users.noreply.github.com'
+    - name: Build
+      run: |
+        npm install
+        cp -r ./require/@matrixage ./node_modules
+        npm run build
+    - name: deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
