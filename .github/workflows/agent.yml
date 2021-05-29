@@ -1,0 +1,49 @@
+name: agent
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 22 * * *'
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+#     - name: Set up Python
+#       uses: actions/setup-python@v2
+#       with:
+#         python-version: '3.8'
+#         architecture: 'x64'
+
+    - name: Download
+      env:
+          TZ: Asia/Shanghai  # 设置时区
+      run: |
+        timedatectl
+        git clone https://github.com/freefq/free.git ./agent
+        python get-bing-wallpapers.py
+    - name: Commit
+      run: |
+        git add .
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "renew agent (`date +%Y/%m/%d`)" -a
+    - name: Push
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
+
+#     - name: Build
+#       run: |
+#         npm install
+#         cp -r ./require/@matrixage ./node_modules
+#         npm run build
+    - name: deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
