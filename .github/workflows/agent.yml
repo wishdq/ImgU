@@ -22,7 +22,9 @@ jobs:
       run: |
         timedatectl
         git clone https://github.com/freefq/free.git ./agent
-        python get-bing-wallpapers.py
+        cp -f ./agent/ssr ./ssr.txt
+        cp -f ./agent/v2 ./v2.txt
+        rm -rf ./agent/
     - name: Commit
       run: |
         git add .
