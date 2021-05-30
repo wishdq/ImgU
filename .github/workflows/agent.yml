@@ -2,7 +2,7 @@ name: agent
 on:
   workflow_dispatch:
   schedule:
-    - cron: '1 4/4 * * *'
+    - cron: '0 0/4 * * *'
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
