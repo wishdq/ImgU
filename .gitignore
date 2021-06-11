@@ -1,4 +1,6 @@
 /dist 
 /node_modules
+/upload/node_modules
+/upload/dist
 deploy.bat
 .DS_Store

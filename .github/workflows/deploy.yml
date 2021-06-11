@@ -12,9 +12,19 @@ jobs:
 
     - name: Build
       run: |
+	    # build img
         npm install
         cp -r ./require/@matrixage ./node_modules
         npm run build
+		# build upload
+		cd upload
+		npm install
+		npm run build
+		cd ../
+		cp -r ./upload/dist ./dist/upload
+		# build agent
+		cp -f ./ssr.txt ./dist/ssr.txt
+        cp -f ./v2.txt ./dist/v2.txt
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
