@@ -23,7 +23,7 @@ def main():
     Find the URL of today's image and download it we don't have it.
     Destination filename will be YYYY-mm-dd_{md5dum}.jpg
     """
-    dest = './assets/BingWallpapers'
+    dest = './assets/Z_BingWallpapers'
     bing_url = 'https://www.bing.com'
     archive_dir = os.path.join(dest, 'Archive')
 
