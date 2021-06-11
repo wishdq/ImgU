@@ -12,7 +12,7 @@ jobs:
 
     - name: Build
       run: |
-	    # build img
+        # build img
         npm install
         cp -r ./require/@matrixage ./node_modules
         npm run build
