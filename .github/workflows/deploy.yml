@@ -17,10 +17,10 @@ jobs:
         cp -r ./require/@matrixage ./node_modules
         npm run build
         # build upload
-        mkdir upload
-        cp -f ./require/upload.zip ./upload
+        #mkdir upload
+        #cp -f ./require/upload.zip ./upload
         cd upload
-        unzip upload.zip
+        #unzip upload.zip
         npm install
         npm run build
         cd ../
