@@ -37,7 +37,7 @@ jobs:
         npm install
         cp -r ./require/@matrixage ./node_modules
         npm run build
-		# build upload
+        # build upload
         cd upload
         npm install
         npm run build
