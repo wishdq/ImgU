@@ -1,60 +1,60 @@
-name: Agent
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 0/4 * * *'
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+# name: Agent
+# on:
+#   workflow_dispatch:
+#   schedule:
+#     - cron: '0 0/4 * * *'
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
 
-    - name: Download
-      env:
-          TZ: Asia/Shanghai  # 设置时区
-      run: |
-        timedatectl
-        git clone https://github.com/freefq/free.git ./agent
-        cp -f ./agent/ssr ./ssr.txt
-        cp -f ./agent/v2 ./v2.txt
-        rm -rf ./agent/
-    - name: Commit
-      run: |
-        git add .
-        git config --local user.email "wish_dq@163.com"
-        git config --local user.name "wish_dq"
-        git commit -m "renew agent (`date +%Y/%m/%d`)" -a
-    - name: Push
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
+#     - name: Download
+#       env:
+#           TZ: Asia/Shanghai  # 设置时区
+#       run: |
+#         timedatectl
+#         git clone https://github.com/freefq/free.git ./agent
+#         cp -f ./agent/ssr ./ssr.txt
+#         cp -f ./agent/v2 ./v2.txt
+#         rm -rf ./agent/
+#     - name: Commit
+#       run: |
+#         git add .
+#         git config --local user.email "wish_dq@163.com"
+#         git config --local user.name "wish_dq"
+#         git commit -m "renew agent (`date +%Y/%m/%d`)" -a
+#     - name: Push
+#       uses: ad-m/github-push-action@master
+#       with:
+#         github_token: ${{ secrets.GITHUB_TOKEN }}
+#         branch: ${{ github.ref }}
 
-    - name: Build
-      run: |
-        # build img
-        npm install
-        cp -r ./require/@matrixage ./node_modules
-        npm run build
-        # build upload
-        mkdir upload
-        cp -f ./require/upload.zip ./upload
-        cd upload
-        unzip upload.zip
-        npm install
-        npm run build
-        cd ../
-        cp -r ./upload/dist ./dist/upload
-        # build agent
-        cp -f ./ssr.txt ./dist/ssr.txt
-        cp -f ./v2.txt ./dist/v2.txt
+#     - name: Build
+#       run: |
+#         # build img
+#         npm install
+#         cp -r ./require/@matrixage ./node_modules
+#         npm run build
+#         # build upload
+#         mkdir upload
+#         cp -f ./require/upload.zip ./upload
+#         cd upload
+#         unzip upload.zip
+#         npm install
+#         npm run build
+#         cd ../
+#         cp -r ./upload/dist ./dist/upload
+#         # build agent
+#         cp -f ./ssr.txt ./dist/ssr.txt
+#         cp -f ./v2.txt ./dist/v2.txt
 
-    - name: deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
-        user_name: ${{ secrets.MY_USER_NAME }}
-        user_email: ${{ secrets.MY_USER_EMAIL }}
-        commit_message: Update Agent
+#     - name: deploy
+#       uses: peaceiris/actions-gh-pages@v3
+#       with:
+#         github_token: ${{ secrets.GITHUB_TOKEN }}
+#         publish_dir: ./dist
+#         user_name: ${{ secrets.MY_USER_NAME }}
+#         user_email: ${{ secrets.MY_USER_EMAIL }}
+#         commit_message: Update Agent
