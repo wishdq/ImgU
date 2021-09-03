@@ -1,39 +1,39 @@
-name: Deploy gh-pages
-on:
-  push:
-    branches:
-      - master
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-20.04
-    steps:
-    - name: Checkout
-      uses: actions/checkout@master
+# name: Deploy gh-pages
+# on:
+#   push:
+#     branches:
+#       - master
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-20.04
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@master
 
-    - name: Build
-      run: |
-        # build img
-        npm install
-        cp -r ./require/@matrixage ./node_modules
-        npm run build
-        # build upload
-        mkdir upload
-        cp -f ./require/upload.zip ./upload
-        cd upload
-        unzip upload.zip
-        npm install
-        npm run build
-        cd ../
-        cp -r ./upload/dist ./dist/upload
-        # build agent
-        cp -f ./ssr.txt ./dist/ssr.txt
-        cp -f ./v2.txt ./dist/v2.txt
+#     - name: Build
+#       run: |
+#         # build img
+#         npm install
+#         cp -r ./require/@matrixage ./node_modules
+#         npm run build
+#         # build upload
+#         mkdir upload
+#         cp -f ./require/upload.zip ./upload
+#         cd upload
+#         unzip upload.zip
+#         npm install
+#         npm run build
+#         cd ../
+#         cp -r ./upload/dist ./dist/upload
+#         # build agent
+#         cp -f ./ssr.txt ./dist/ssr.txt
+#         cp -f ./v2.txt ./dist/v2.txt
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        publish_dir: ./dist
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        user_name: ${{ secrets.MY_USER_NAME }}
-        user_email: ${{ secrets.MY_USER_EMAIL }}
-        commit_message: Update Img
+#     - name: Deploy
+#       uses: peaceiris/actions-gh-pages@v3
+#       with:
+#         publish_dir: ./dist
+#         github_token: ${{ secrets.GITHUB_TOKEN }}
+#         user_name: ${{ secrets.MY_USER_NAME }}
+#         user_email: ${{ secrets.MY_USER_EMAIL }}
+#         commit_message: Update Img
